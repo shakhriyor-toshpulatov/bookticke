@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class TicketView extends StatelessWidget {
-  const TicketView({Key? key}) : super(key: key);
+  final Map<String, dynamic> ticket;
+  const TicketView({Key? key, required this.ticket}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class TicketView extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        "TAS",
+                        ticket['from']['code'],
                         style:
                             Styles.headLineStyle3.copyWith(color: Colors.white),
                       ),
@@ -83,7 +84,7 @@ class TicketView extends StatelessWidget {
                         child: Container(),
                       ),
                       Text(
-                        "BHK",
+                        ticket['to']['code'],
                         style:
                             Styles.headLineStyle3.copyWith(color: Colors.white),
                       ),
@@ -96,20 +97,20 @@ class TicketView extends StatelessWidget {
                       SizedBox(
                         width: 100,
                         child: Text(
-                          "Tashkent",
+                          ticket['from']['name'],
                           style: Styles.headLineStyle4
                               .copyWith(color: Colors.white),
                         ),
                       ),
                       Text(
-                        "7h 45M",
+                        ticket['driving time'],
                         style:
                             Styles.headLineStyle4.copyWith(color: Colors.white),
                       ),
                       SizedBox(
                         width: 100,
                         child: Text(
-                          "Bukhara",
+                          ticket['to']['code'],
                           textAlign: TextAlign.end,
                           style: Styles.headLineStyle4
                               .copyWith(color: Colors.white),
@@ -206,7 +207,7 @@ class TicketView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "1 MAY",
+                            ticket['date'],
                             style: Styles.headLineStyle3.copyWith(
                               color: Colors.white,
                             ),
@@ -224,7 +225,7 @@ class TicketView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            "21:00",
+                            ticket['departure time'],
                             style: Styles.headLineStyle3.copyWith(
                               color: Colors.white,
                             ),
@@ -242,14 +243,14 @@ class TicketView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Text(
-                            "2 MAY",
+                            ticket['number'],
                             style: Styles.headLineStyle3.copyWith(
                               color: Colors.white,
                             ),
                           ),
                           const Gap(5),
                           Text(
-                            "DATE",
+                            "NUMBER",
                             style: Styles.headLineStyle4.copyWith(
                               color: Colors.white,
                             ),
