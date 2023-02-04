@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import '../utils/app_layout.dart';
 import '../utils/app_styles.dart';
+import '../widgets/double_text_widget.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -75,9 +76,29 @@ class SearchScreen extends StatelessWidget {
             ),
           ),
           Gap(AppLayout.getHeight(25)),
-          const AppIconText(icon: Icons.flight_takeoff_rounded, text: "Depature"),
-          Gap(AppLayout.getHeight(25)),
+          const AppIconText(
+              icon: Icons.flight_takeoff_rounded, text: "Depature"),
+          Gap(AppLayout.getHeight(20)),
           const AppIconText(icon: Icons.flight_land_rounded, text: "Arrival"),
+          Gap(AppLayout.getHeight(25)),
+          Container(
+            padding: EdgeInsets.symmetric(
+              vertical: AppLayout.getWidth(18),
+              horizontal: AppLayout.getWidth(15),
+            ),
+            decoration: BoxDecoration(
+              color: Color(0xD91130CE),
+              borderRadius: BorderRadius.circular(AppLayout.getWidth(10)),
+            ),
+            child: Center(
+              child: Text(
+                "Find taxi",
+                style: Styles.textStyle.copyWith(color: Colors.white),
+              ),
+            ),
+          ),
+          Gap(AppLayout.getHeight(40)),
+          const AppDoubleTextWidget(bigText: "Upcoming flight", smallText: "View all"),
         ],
       ),
     );
