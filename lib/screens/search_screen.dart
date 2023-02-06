@@ -1,3 +1,4 @@
+import 'package:booktickets/screens/ticket_tab.dart';
 import 'package:booktickets/widgets/icon_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -27,57 +28,10 @@ class SearchScreen extends StatelessWidget {
             ),
           ),
           Gap(AppLayout.getHeight(20)),
-          FittedBox(
-            child: Container(
-              padding: const EdgeInsets.all(3.5),
-              child: Row(
-                children: [
-                  /*
-                taxi drivers
-                 */
-                  Container(
-                    width: size.width * .44,
-                    padding:
-                        EdgeInsets.symmetric(vertical: AppLayout.getHeight(7)),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.horizontal(
-                        left: Radius.circular(AppLayout.getHeight(50)),
-                      ),
-                      color: Colors.white,
-                    ),
-                    child: Center(
-                      child: Text("Taxi"),
-                    ),
-                  ),
-                  /*
-                  the packages
-               */
-
-                  Container(
-                    width: size.width * .44,
-                    padding:
-                        EdgeInsets.symmetric(vertical: AppLayout.getHeight(7)),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.horizontal(
-                        right: Radius.circular(AppLayout.getHeight(50)),
-                      ),
-                      color: Colors.transparent,
-                    ),
-                    child: Center(
-                      child: Text("The Packages"),
-                    ),
-                  ),
-                ],
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(AppLayout.getHeight(50)),
-                color: const Color(0xFFF4F6FD),
-              ),
-            ),
-          ),
+          const AppTicketTabs(firstTab: "Taxi", secondTad: "The Packages",),
           Gap(AppLayout.getHeight(25)),
           const AppIconText(
-              icon: Icons.flight_takeoff_rounded, text: "Depature"),
+              icon: Icons.flight_takeoff_rounded, text: "Departure"),
           Gap(AppLayout.getHeight(20)),
           const AppIconText(icon: Icons.flight_land_rounded, text: "Arrival"),
           Gap(AppLayout.getHeight(25)),

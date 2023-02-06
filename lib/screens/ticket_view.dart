@@ -6,7 +6,10 @@ import 'package:gap/gap.dart';
 
 class TicketView extends StatelessWidget {
   final Map<String, dynamic> ticket;
-  const TicketView({Key? key, required this.ticket}) : super(key: key);
+  final bool? isColor;
+
+  const TicketView({Key? key, required this.ticket, this.isColor})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,7 @@ class TicketView extends StatelessWidget {
             */
             Container(
               decoration: BoxDecoration(
-                color: Color(0xFF526799),
+                color: isColor == null ? Color(0xFF526799) : Colors.white,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(AppLayout.getHeight(21)),
                   topRight: Radius.circular(AppLayout.getHeight(21)),
@@ -36,13 +39,15 @@ class TicketView extends StatelessWidget {
                     children: [
                       Text(
                         ticket['from']['code'],
-                        style:
-                            Styles.headLineStyle3.copyWith(color: Colors.white),
+                        style: isColor == null
+                            ? Styles.headLineStyle3
+                                .copyWith(color: Colors.white)
+                            : Styles.headLineStyle3,
                       ),
                       Expanded(
                         child: Container(),
                       ),
-                      ThickContainer(),
+                      ThickContainer(isColor: true),
                       Expanded(
                         child: Stack(children: [
                           SizedBox(
@@ -57,12 +62,14 @@ class TicketView extends StatelessWidget {
                                   mainAxisSize: MainAxisSize.max,
                                   children: List.generate(
                                     (constraints.constrainWidth() / 6).floor(),
-                                    (index) => const SizedBox(
+                                    (index) => SizedBox(
                                       width: 3,
                                       height: 1,
                                       child: DecoratedBox(
-                                        decoration:
-                                            BoxDecoration(color: Colors.white),
+                                        decoration: BoxDecoration(
+                                            color: isColor == null
+                                                ? Colors.white
+                                                : Colors.grey.shade300),
                                       ),
                                     ),
                                   ),
@@ -74,19 +81,23 @@ class TicketView extends StatelessWidget {
                             child: Transform.rotate(
                               angle: 0,
                               child: Icon(Icons.local_taxi_rounded,
-                                  color: Colors.white),
+                                  color: isColor == null
+                                      ? Colors.white
+                                      : Color(0xFF8ACCF7)),
                             ),
                           ),
                         ]),
                       ),
-                      ThickContainer(),
+                      ThickContainer(isColor: true),
                       Expanded(
                         child: Container(),
                       ),
                       Text(
                         ticket['to']['code'],
-                        style:
-                            Styles.headLineStyle3.copyWith(color: Colors.white),
+                        style: isColor == null
+                            ? Styles.headLineStyle3
+                                .copyWith(color: Colors.white)
+                            : Styles.headLineStyle4,
                       ),
                     ],
                   ),
