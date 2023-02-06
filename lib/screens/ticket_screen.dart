@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../utils/app_styles.dart';
+import '../widgets/column_layout.dart';
 
 class TicketScreen extends StatelessWidget {
   const TicketScreen({Key? key}) : super(key: key);
@@ -14,6 +15,7 @@ class TicketScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = AppLayout.getSize(context);
     return Scaffold(
+      backgroundColor: Styles.bgColor,
       body: Stack(children: [
         ListView(
           padding: EdgeInsets.symmetric(
@@ -31,9 +33,38 @@ class TicketScreen extends StatelessWidget {
             Gap(AppLayout.getHeight(20)),
             Container(
               padding: EdgeInsets.only(left: AppLayout.getHeight(15)),
-              child: TicketView(ticket: ticketList[0],
-              isColor: true,),
+              child: TicketView(
+                ticket: ticketList[0],
+                isColor: true,
+              ),
             ),
+            SizedBox(height: 1),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+              margin: EdgeInsets.symmetric(horizontal: 15),
+              color: Colors.white,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      AppColumnLayout(
+                        firstText: "Flutter DB",
+                        secondText: "Passenger",
+                        alignment: CrossAxisAlignment.start,
+                        isColor: false,
+                      ),
+                      AppColumnLayout(
+                        firstText: "5221 364869",
+                        secondText: "passport",
+                        alignment: CrossAxisAlignment.end,
+                        isColor: false,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ]),
